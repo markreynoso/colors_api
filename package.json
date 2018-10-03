@@ -1,0 +1,28 @@
+{
+  "name": "colors_api",
+  "version": "1.0.0",
+  "description": "Simple node backend for colors app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markreynoso/colors_api.git"
+  },
+  "author": "Mark Reynoso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markreynoso/colors_api/issues"
+  },
+  "homepage": "https://github.com/markreynoso/colors_api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
