@@ -1,5 +1,4 @@
 const EXPRESS = require('express');
-const PARSE = require('body-parser');
 const APP = EXPRESS();
 const PG = require('pg');
 const PORT = process.env.PORT || 3000;
@@ -9,21 +8,31 @@ const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
 
 function dropTable(request, response) {
-    CLIENT.query('DROP TABLE color_list').then(makeTable).catch(err => console.error('drop table error:', err))
+    CLIENT.query('DROP TABLE color_list').then(makeTable).then(seedDB).catch(err => console.error('drop table error:', err))
 }
 
 function makeTable(request, response) {
     CLIENT.query(`CREATE TABLE color_list (
         color_id SERIAL PRIMARY KEY,
-        hex VARCHAR(255) UNIQUE,
-        name VARCHAR(255))`)
-        .then(seedDB)
-        .catch(err => console.error('your error', err));
+        hex VARCHAR(255) UNIQUE)`)
+        .catch(err => console.error('Make Table Error:', err));
 }
 
 function seedDB() {
-    CLIENT.query(`INSERT INTO color_list(hex, name) VALUES($1, $2) ON CONFLICT (hex) DO NOTHING`, ['#FF0000', 'Red'])
-        .catch(err => console.error(err));
+    for(let i = 0; i < 100; i++) {
+        let hex = createHexColor()
+        CLIENT.query(`INSERT INTO color_list(hex) VALUES($1) ON CONFLICT (hex) DO NOTHING`, [hex])
+            .catch(err => console.error('SeedDB Error:', err));
+    }
+}
+
+function createHexColor() {
+    const chars = '0123456789ABCDEF'
+    let color = '#'
+    for(let i = 0; i < 6; i++) {
+        color += chars[Math.floor(Math.random() * 16)]
+    }
+    return color
 }
 
 APP.get('/api/colors', function(request, response) {
