@@ -8,7 +8,7 @@ const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
 
 function dropTable(request, response) {
-    CLIENT.query('DROP TABLE color_list').then(makeTable).then(seedDB).catch(err => console.error('drop table error:', err))
+    CLIENT.query('DROP TABLE IF EXISTS color_list').then(makeTable).then(seedDB).catch(err => console.error('drop table error:', err))
 }
 
 function makeTable(request, response) {
