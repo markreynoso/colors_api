@@ -7,7 +7,7 @@ const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/colors'
 const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
 
-app.use(function (req, res, next) { 
+APP.use(function (req, res, next) { 
     res.setHeader('Access-Control-Allow-Origin', 'https://angry-leavitt-b02e7c.netlify.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
