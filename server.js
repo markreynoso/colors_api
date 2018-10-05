@@ -7,6 +7,17 @@ const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/colors'
 const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
 
+app.use(function (req, res, next) { 
+    res.setHeader('Access-Control-Allow-Origin', 'https://angry-leavitt-b02e7c.netlify.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+    if ('OPTIONS' === req.method) {
+        res.send(204);
+    } else {
+        next();
+    }
+});
+
 function dropTable(request, response) {
     CLIENT.query('DROP TABLE IF EXISTS color_list').then(makeTable).then(seedDB).catch(err => console.error('drop table error:', err))
 }
