@@ -23,7 +23,7 @@ Returns all colors currently in color_list table:
 ##### *Installation*
 First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:
 
-`$ git clone https://github.com/markreynoso/starwars-character-filter.git`
+`$ git clone https://github.com/markreynoso/colors_api.git`
 
 `$ cd colors_api`
 
@@ -38,7 +38,3 @@ You are now ready to run the program on your local machine.
 Open your browser and navigate to the following url and proceed to the endpoint you desire.
 
 [http://localhost:3000](http://localhost:3000)
-
-### License
----
-This project is licensed under MIT License - see the LICENSE.md file for details.
