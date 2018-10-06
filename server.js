@@ -8,7 +8,7 @@ const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
 
 APP.use(function (req, res, next) { 
-    res.setHeader('Access-Control-Allow-Origin', 'https://angry-leavitt-b02e7c.netlify.com');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     if ('OPTIONS' === req.method) {
