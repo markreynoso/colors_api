@@ -19,6 +19,7 @@ Returns all colors currently in color_list table:
 ##### *Prerequisites*
 * [node.js](https://nodejs.org/en/download/)
 * [git](https://git-scm.com/)
+* [postgreSQL](https://www.postgresql.org/)
 
 ##### *Installation*
 First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:
@@ -30,6 +31,10 @@ First, clone the project repo from Github. Then, change directories into the clo
 Now now that you have cloned your repo and changed directories into the project, install the package dependencies.
 
 `$ npm install`
+
+Create database in postgres. You may name the database as you desire. After creation of database, add an environment variable named 'DATABASE_URL' equal to your postgres database address, for example, if you use bash your could have the followin in your `.baserc` file: 
+
+`export DATABASE_URL='postgres://@localhost:5432/colors`
 
 You are now ready to run the program on your local machine.
 
